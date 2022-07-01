@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\VisitorController;
+
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ReceptionistController;
 
@@ -17,11 +19,12 @@ use App\Http\Controllers\Admin\ReceptionistController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware(['guest'])->group(function () {
+    // Route Index
+    Route::get('/', [VisitorController::class, 'index'])->name('index');
+    Route::post('/postCheckIn', [VisitorController::class, 'postCheckIn'])->name('visitor.postCheckIn');
+
+    // Route Login
     Route::get('/login', [AuthController::class, 'formLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'postLogin'])->name('postLogin');
 });
