@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ReceptionistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,13 @@ Route::middleware(['auth'])->group(function () {
 
     // Route Home
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    // Route Receptionist
+    Route::prefix('receptionist')->group(function () {
+        Route::get('/', [ReceptionistController::class, 'index'])->name('receptionist.index');
+        Route::post('/store', [ReceptionistController::class, 'store'])->name('receptionist.store');
+        Route::get('/edit/{id}', [ReceptionistController::class, 'edit'])->name('receptionist.edit');
+        Route::post('/update', [ReceptionistController::class, 'update'])->name('receptionist.update');
+        Route::get('/reset/{id}', [ReceptionistController::class, 'reset'])->name('receptionist.reset');
+    });
 });

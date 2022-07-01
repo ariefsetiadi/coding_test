@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
         $user   =   [
                         [
                             'fullname'      =>  'Resepsionis 1',
+                            'gender'        =>  'L',
                             'username'      =>  'admin123',
                             'password'      =>  Hash::make('admin123'),
                             'status'        =>  true,
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
                         ],
                         [
                             'fullname'      =>  'Resepsionis 2',
+                            'gender'        =>  'P',
                             'username'      =>  'admin456',
                             'password'      =>  Hash::make('admin456'),
                             'status'        =>  true,

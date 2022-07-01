@@ -15,6 +15,6 @@ class HomeController extends Controller
     {
         $data['title']  =   'Home';
 
-        return view('admin.index', $data);
+        return view('admin.home', $data);
     }
 }
