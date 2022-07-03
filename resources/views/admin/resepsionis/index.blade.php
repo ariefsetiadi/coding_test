@@ -104,6 +104,22 @@
             </div>
         </div>
     </div>
+
+    <!-- Delete Confirmation -->
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="confirmDeleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center my-3">
+                        <img src="{{ asset('assets/img/confirm-delete.svg') }}">
+                        <h5 class="my-3" style="color: #1f1f1f">Anda Yakin Ingin Menghapus Resepsionis Ini?</h5>
+                        <button type="button" class="btn btn-secondary mr-1" id="btnTdk" data-dismiss="modal"></button>
+                        <button type="submit" class="btn btn-danger ml-1" id="btnYa"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('js')
@@ -342,6 +358,41 @@
                     success: function(data) {
                         setTimeout(function() {
                             $('#confirmModal').modal('hide');
+                            $('#receptionistTable').DataTable().ajax.reload();
+                        });
+
+                        Swal.fire({
+                            title: 'Sukses',
+                            text: data.success,
+                            icon: 'success',
+                            timer: 2000
+                        });
+                    }
+                });
+            });
+
+            // Ajax Display Confirmation Delete Modal
+            var route   =   '{{ route("receptionist.destroy", ":id") }}';
+
+            $(document).on('click', '.btnDelete', function() {
+                recept_id =   $(this).attr('id');
+
+                $('#confirmDeleteModal').modal("show");
+                $('#btnTdk').text("Batal");
+                $('#btnYa').text("Ya, Hapus");
+            });
+
+            // Ajax Delete Data
+            $('#btnYa').click(function() {
+                $.ajax({
+                    url: route.replace(":id", recept_id),
+                    beforeSend: function() {
+                        $('#btnYa').text('Menghapus...');
+                    },
+
+                    success: function(data) {
+                        setTimeout(function() {
+                            $('#confirmDeleteModal').modal('hide');
                             $('#receptionistTable').DataTable().ajax.reload();
                         });
 

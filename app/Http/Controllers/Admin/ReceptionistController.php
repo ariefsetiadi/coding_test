@@ -20,8 +20,9 @@ class ReceptionistController extends Controller
         if(request()->ajax()) {
             return datatables()->of(User::where('id', '!=', Auth::user()->id)->orderBy('created_at', 'desc')->get())
                 ->addColumn('action', function($data) {
-                    $button =   '<button type="button" id="'.$data->id.'" class="btnEdit btn btn-warning mr-1" title="Edit Resepsionis"><i class="fas fa-pencil-alt"></i></button>';
-                    $button .=  '<button type="button" id="'.$data->id.'" class="btnReset btn btn-danger ml-1" title="Reset Password"><i class="fas fa-undo"></i></button>';
+                    $button =   '<button type="button" id="'.$data->id.'" class="btnEdit btn btn-success" title="Edit Resepsionis"><i class="fas fa-pencil-alt"></i></button>';
+                    $button .=  '<button type="button" id="'.$data->id.'" class="btnReset btn btn-warning mx-2" title="Reset Password"><i class="fas fa-undo"></i></button>';
+                    $button .=  '<button type="button" id="'.$data->id.'" class="btnDelete btn btn-danger" title="Hapus Resepsionis"><i class="fas fa-trash"></i></button>';
 
                     return $button;
                 })->editColumn('status', function($user) {
@@ -127,7 +128,10 @@ class ReceptionistController extends Controller
 
     public function destroy($id)
     {
-        //
+        $receptionist   =   User::where('id', '!=', Auth::user()->id)->findOrFail($id);
+        $receptionist->delete();
+
+        return response()->json(['success' => 'Resepsionis Berhasil Dihapus']);
     }
 
     public function reset($id)

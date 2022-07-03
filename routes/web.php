@@ -45,5 +45,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', [ReceptionistController::class, 'edit'])->name('receptionist.edit');
         Route::post('/update', [ReceptionistController::class, 'update'])->name('receptionist.update');
         Route::get('/reset/{id}', [ReceptionistController::class, 'reset'])->name('receptionist.reset');
+        Route::get('/destroy/{id}', [ReceptionistController::class, 'destroy'])->name('receptionist.destroy');
     });
 });
