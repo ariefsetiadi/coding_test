@@ -25,141 +25,112 @@
         <div class="container py-5">
             <div class="card">
                 <div class="card-header">
-                    <ul class="nav nav-pills nav-fill justify-content-center" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="check-in-tab" data-toggle="pill" href="#check-in" role="tab" aria-controls="check-in" aria-selected="true">CHECK-IN</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="check-out-tab" data-toggle="pill" href="#check-out" role="tab" aria-controls="check-out" aria-selected="false">CHECK-OUT</a>
-                        </li>
-                    </ul>
+                    <h3>Form Register Tamu</h3>
                 </div>
 
                 <div class="card-body">
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="check-in" role="tabpanel" aria-labelledby="check-in-tab">
-                            <form method="post" id="checkInForm" class="form-horizontal" enctype="multipart/form-data">
-                                @csrf
+                    <form method="post" id="checkInForm" class="form-horizontal" enctype="multipart/form-data">
+                        @csrf
 
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Tanda Pengenal</label>
-                                            <select name="id_card" id="id_card" class="form-control">
-                                                <option value="">-- Pilih Tanda Pengenal --</option>
-                                                <option value="KTP">KTP</option>
-                                                <option value="SIM">SIM</option>
-                                            </select>
-                                            <span class="text-danger" id="id_card_error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Nomor Tanda Pengenal</label>
-                                            <input type="text" name="id_number" id="id_number" class="form-control" placeholder="Nomor Tanda Pengenal">
-                                            <span class="text-danger" id="id_number_error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Nama Lengkap</label>
-                                            <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Nama Lengkap">
-                                            <span class="text-danger" id="fullname_error"></span>
-                                        </div>
-                                    </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Tanda Pengenal</label>
+                                    <select name="id_card" id="id_card" class="form-control">
+                                        <option value="">-- Pilih Tanda Pengenal --</option>
+                                        <option value="KTP">KTP</option>
+                                        <option value="SIM">SIM</option>
+                                    </select>
+                                    <span class="text-danger" id="id_card_error"></span>
                                 </div>
-    
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Jenis Kelamin</label>
-                                            <select name="gender" id="gender" class="form-control">
-                                                <option value="">-- Pilih Jenis Kelamin --</option>
-                                                <option value="L">Laki-Laki</option>
-                                                <option value="P">Perempuan</option>
-                                            </select>
-                                            <span class="text-danger" id="gender_error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Tanggal Lahir</label>
-                                            <input type="date" name="date_of_birth" id="date_of_birth" class="form-control" placeholder="Tanggal Lahir">
-                                            <span class="text-danger" id="date_of_birth_error"></span>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Email</label>
-                                            <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-                                            <span class="text-danger" id="email_error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Telepon</label>
-                                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Telepon">
-                                            <span class="text-danger" id="phone_error"></span>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Foto</label>
-                                            <input type="file" name="image" id="image" class="form-control">
-                                            <span class="text-danger" id="image_error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Alamat Lengkap</label>
-                                            <textarea name="address" id="address" class="form-control" rows="5" placeholder="Alamat Lengkap"></textarea>
-                                            <span class="text-danger" id="address_error"></span>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <hr>
-    
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Bertemu Dengan</label>
-                                            <input type="text" name="meet_with" id="meet_with" class="form-control" placeholder="Bertemu Dengan">
-                                            <span class="text-danger" id="meet_with_error"></span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Perihal</label>
-                                            <textarea name="concern" id="concern" class="form-control" rows="5" placeholder="Perihal"></textarea>
-                                            <span class="text-danger" id="concern_error"></span>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <hr>
-    
-                                <button type="submit" class="btn btn-lg btn-success float-right" id="btnCheckIn">Check-In</button>
-                            </form>
-                        </div>
-
-                        <div class="tab-pane fade" id="check-out" role="tabpanel" aria-labelledby="check-out-tab">
-                            <div class="row">
-                                <div class="col-md-11">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nomor Tanda Pengenal</label>
                                     <input type="text" name="id_number" id="id_number" class="form-control" placeholder="Nomor Tanda Pengenal">
-                                </div>
-                                <div class="col-md-1">
-                                    <button type="submit" class="btn btn-primary">Cari</button>
+                                    <span class="text-danger" id="id_number_error"></span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nama Lengkap</label>
+                                    <input type="text" name="fullname" id="fullname" class="form-control" placeholder="Nama Lengkap">
+                                    <span class="text-danger" id="fullname_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Jenis Kelamin</label>
+                                    <select name="gender" id="gender" class="form-control">
+                                        <option value="">-- Pilih Jenis Kelamin --</option>
+                                        <option value="L">Laki-Laki</option>
+                                        <option value="P">Perempuan</option>
+                                    </select>
+                                    <span class="text-danger" id="gender_error"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Tanggal Lahir</label>
+                                    <input type="date" name="date_of_birth" id="date_of_birth" class="form-control" placeholder="Tanggal Lahir">
+                                    <span class="text-danger" id="date_of_birth_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                    <span class="text-danger" id="email_error"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Telepon</label>
+                                    <input type="text" name="phone" id="phone" class="form-control" placeholder="Telepon">
+                                    <span class="text-danger" id="phone_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Alamat Lengkap (Domisili)</label>
+                                    <textarea name="address" id="address" class="form-control" rows="5" placeholder="Alamat Lengkap (Domisili)"></textarea>
+                                    <span class="text-danger" id="address_error"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Bertemu Dengan</label>
+                                    <input type="text" name="meet_with" id="meet_with" class="form-control" placeholder="Bertemu Dengan">
+                                    <span class="text-danger" id="meet_with_error"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Perihal</label>
+                                    <textarea name="concern" id="concern" class="form-control" rows="5" placeholder="Perihal"></textarea>
+                                    <span class="text-danger" id="concern_error"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <button type="submit" class="btn btn-lg btn-success float-right" id="btnCheckIn">Register</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -188,7 +159,6 @@
                     $('#date_of_birth_error').html();
                     $('#email_error').html();
                     $('#phone_error').html();
-                    $('#image_error').html();
                     $('#address_error').html();
                     $('#meet_with_error').html();
                     $('#concern_error').html();
@@ -232,10 +202,6 @@
                                     $("#phone_error").html(data.errors.phone[0]);
                                     $("#phone").addClass("is-invalid");
                                 }
-                                if(data.errors.image) {
-                                    $("#image_error").html(data.errors.image[0]);
-                                    $("#image").addClass("is-invalid");
-                                }
                                 if(data.errors.address) {
                                     $("#address_error").html(data.errors.address[0]);
                                     $("#address").addClass("is-invalid");
@@ -265,7 +231,7 @@
                         }
                     });
                 });
-            })
+            });
         </script>
     </body>
 </html>

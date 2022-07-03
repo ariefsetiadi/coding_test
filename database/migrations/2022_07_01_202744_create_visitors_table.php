@@ -23,12 +23,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone', 13);
             $table->text('address');
-            $table->string('image');
             $table->string('meet_with');
             $table->text('concern');
-            $table->boolean('status')->default(true);
-            $table->datetime('checkin');
-            $table->datetime('checkout')->nullable();
+            $table->datetime('register_at');
         });
     }
 

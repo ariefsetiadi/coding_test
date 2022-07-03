@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use \Carbon\Carbon;
 use File;
 use Validator;
 
@@ -11,7 +12,7 @@ use App\Models\Visitor;
 
 class VisitorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $data['title']  =   'Selamat Datang';
 
@@ -33,8 +34,6 @@ class VisitorController extends Controller
                             'email'         =>  'required|email',
                             'phone'         =>  'required|digits_between:10,13',
                             'address'       =>  'required',
-                            'image'         =>  'required|max:10240',
-                            'image.*'       =>  'mimes:jpg,jpeg,png',
                             'meet_with'     =>  'required|max:255|regex:/^[a-zA-Z ]*$/',
                             'concern'       =>  'required',
                         ],
@@ -55,9 +54,6 @@ class VisitorController extends Controller
                             'phone.required'            =>  'Telepon wajib diisi',
                             'phone.digits_between'      =>  'Telepon minimal 10 angka, maksimal 13 angka',
                             'address.required'          =>  'Alamat Lengkap wajib diisi',
-                            'image.required'            =>  'Foto wajib diupload',
-                            'image.max'                 =>  'Foto maksimal 10 MB',
-                            'image.mimes'               =>  'Foto wajib JPG, JPEG, atau PNG',
                             'meet_with.required'        =>  'Bertemu Dengan wajib diisi',
                             'meet_with.max'             =>  'Bertemu Dengan maksimal 255 karakter',
                             'meet_with.regex'           =>  'Bertemu Dengan hanya boleh huruf dan spasi',
@@ -67,5 +63,21 @@ class VisitorController extends Controller
         if($validate->fails()) {
             return response()->json(['errors' => $validate->errors()]);
         }
+
+        $visitor                =   new Visitor;
+        $visitor->id_card       =   $request->id_card;
+        $visitor->id_number     =   $request->id_number;
+        $visitor->fullname      =   $fullname;
+        $visitor->gender        =   $request->gender;
+        $visitor->date_of_birth =   $request->date_of_birth;
+        $visitor->email         =   $email;
+        $visitor->phone         =   $request->phone;
+        $visitor->address       =   $request->address;
+        $visitor->meet_with     =   $meet;
+        $visitor->concern       =   $request->concern;
+        $visitor->register_at   =   Carbon::now();
+        $visitor->save();
+
+        return response()->json(['success' => 'Registrasi Tamu Berhasil']);
     }
 }

@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\ReceptionistController;
 Route::middleware(['guest'])->group(function () {
     // Route Index
     Route::get('/', [VisitorController::class, 'index'])->name('index');
+
+    // Route CheckIn
     Route::post('/postCheckIn', [VisitorController::class, 'postCheckIn'])->name('visitor.postCheckIn');
 
     // Route Login
