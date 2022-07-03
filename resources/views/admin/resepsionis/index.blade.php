@@ -8,7 +8,7 @@
 @section('content')
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <button class="btn btn-primary" id="btnAdd" title="Tambah Resepsionis"><i class="fas fa-plus"></i></button>
+            <button class="btn btn-primary" id="btnAdd">Tambah</button>
         </div>
 
         <div class="card-body">
@@ -192,7 +192,7 @@
                     {
                         targets: 5,
                         className: 'text-center',
-                        width: '20%'
+                        width: '30%'
                     }
                 ]
             });

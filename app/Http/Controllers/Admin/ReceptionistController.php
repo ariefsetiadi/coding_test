@@ -20,9 +20,9 @@ class ReceptionistController extends Controller
         if(request()->ajax()) {
             return datatables()->of(User::where('id', '!=', Auth::user()->id)->orderBy('created_at', 'desc')->get())
                 ->addColumn('action', function($data) {
-                    $button =   '<button type="button" id="'.$data->id.'" class="btnEdit btn btn-success" title="Edit Resepsionis"><i class="fas fa-pencil-alt"></i></button>';
-                    $button .=  '<button type="button" id="'.$data->id.'" class="btnReset btn btn-warning mx-2" title="Reset Password"><i class="fas fa-undo"></i></button>';
-                    $button .=  '<button type="button" id="'.$data->id.'" class="btnDelete btn btn-danger" title="Hapus Resepsionis"><i class="fas fa-trash"></i></button>';
+                    $button =   '<button type="button" id="'.$data->id.'" class="btnEdit btn btn-success">Edit</button>';
+                    $button .=  '<button type="button" id="'.$data->id.'" class="btnReset btn btn-warning mx-2">Reset Password</button>';
+                    $button .=  '<button type="button" id="'.$data->id.'" class="btnDelete btn btn-danger">Hapus</button>';
 
                     return $button;
                 })->editColumn('status', function($user) {
