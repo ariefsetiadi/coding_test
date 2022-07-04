@@ -30,7 +30,7 @@ Aplikasi Registrasi Tamu
 # FLOW APLIKASI
 
 ## Admin
--   [x] Admin login melalui form login : **domain.com/login**,
+-   [x] Admin login melalui form login : **https://registrasi-tamu.sobat-tech.com/login**,
     -   Username    :   **admin123**
     -   Password    :   **admin123**
 -   [x] Setelah login, pada Halaman **Dashboard**, admin dapat melihat total tamu/visitor
@@ -41,6 +41,10 @@ Aplikasi Registrasi Tamu
 -   [x] Untuk hapus data resepsionis, klik button **Hapus**, maka akan muncul modal Konfirmasi **Hapus Data**, lalu tekan button **Ya, Hapus**
 
 ## Tamu / Visitor
--   [x] Tamu mengakses halaman awal, maka akan muncul **Form Register Tamu**
+-   [x] Tamu mengakses halaman awal **https://registrasi-tamu.sobat-tech.com**, maka akan muncul **Form Register Tamu**
 -   [x] Isi semua data dengan benar, setelah itu klik button **Register**
 -   [x] Jika data berhasil disimpan, akan muncul informasi **Data Berhasil Disimpan**
+
+
+# FITUR TAMBAHAN (Belum Implementasi)
+-   [x] Mengambil foto tamu menggunakan kamera pada **Form Register Tamu**
